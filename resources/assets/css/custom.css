@@ -1,0 +1,305 @@
+ 
+ /* -------------- Settings CSS---------------- */
+ .settings section {
+    float: left;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .settings section h2 {
+    color: #757575;
+    font-size: 18px;
+    margin-top: 0;
+  }
+  
+  .settings section h2 a {
+    color: #008FFF;
+    font-size: 12px;
+  }
+  
+  .settings section h3 {
+    font-size: 12px;
+    margin: 0;
+  }
+  
+  .settings section p {
+    margin: 5px 0 15px;
+  }
+  
+  .settings section .column {
+    display: block;
+    float: left;
+    margin-right: 20px;
+    overflow: hidden;
+    width: 200px;
+  }
+  
+  .settings section .column.admin-column {
+    width: 400px;
+  }
+  
+  .settings section .column a {
+    color: #009CDD;
+    cursor: pointer;
+  }
+  
+  .settings section .column.dpa-column {
+    width: 500px;
+  }
+
+  /* ------------ Settings - Modal CSS ------------- */
+
+  .modal-form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  @media screen and (prefers-reduced-motion: reduce) {
+    .modal-form-control {
+      transition: none;
+    }
+  }
+  
+  .modal-form-control::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+  
+  .modal-form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .modal-form-control::-webkit-input-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  .modal-form-control::-moz-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  .modal-form-control:-ms-input-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  .modal-form-control::-ms-input-placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  .modal-form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  .modal-form-control:disabled, .modal-form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+  }
+  
+  select.modal-form-control:focus::-ms-value {
+    color: #495057;
+    background-color: #fff;
+  }
+  
+  .modal-form-control-file,
+  .modal-form-control-range {
+    display: block;
+    width: 100%;
+  }
+  
+  .col-form-label {
+    padding-top: calc(0.375rem + 1px);
+    padding-bottom: calc(0.375rem + 1px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5;
+  }
+  
+  .col-form-label-lg {
+    padding-top: calc(0.5rem + 1px);
+    padding-bottom: calc(0.5rem + 1px);
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+  
+  .col-form-label-sm {
+    padding-top: calc(0.25rem + 1px);
+    padding-bottom: calc(0.25rem + 1px);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  
+  .modal-form-control-plaintext {
+    display: block;
+    width: 100%;
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    margin-bottom: 0;
+    line-height: 1.5;
+    color: #212529;
+    background-color: transparent;
+    border: solid transparent;
+    border-width: 1px 0;
+  }
+  
+  .modal-form-control-plaintext.modal-form-control-sm, .modal-form-control-plaintext.modal-form-control-lg {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  
+  .modal-form-control-sm {
+    height: calc(1.8125rem + 2px);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+  }
+  
+  .modal-form-control-lg {
+    height: calc(2.875rem + 2px);
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+  }
+  
+  select.modal-form-control[size], select.modal-form-control[multiple] {
+    height: auto;
+  }
+  
+  textarea.modal-form-control {
+    height: auto;
+  }
+
+/*----------------- Form columns -------------- */
+.form__body__col .controls form__ctrl{
+    display: block;
+}
+
+.form__body__col:first-child {
+    padding-left: 0;
+}
+.form__body__col--first {
+    border-left: 0;
+}
+.form__body__col {
+    display: inline-block;
+    white-space: normal;
+    vertical-align: top;
+    width: 240px;
+    margin: 0 0 15px 0;
+    padding: 0 6px;
+    padding-left: 6px;
+    border-right: 1px solid #e4e7e5;
+    border-left: 1px solid #fff;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+* {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.controls.half {
+    width: 50%;
+}
+
+.form__ctrl {
+    position: relative;
+}
+
+.form__ctrl__title, .cLabel {
+    display: block;
+    color: #365269;
+    font-weight: bold;
+    margin-bottom: 3px;
+    text-shadow: 1px 1px 0 #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.controls, .form__ctrl {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    padding: 0 5px;
+    min-height: auto;
+}
+
+
+
+/* 4.18 Component - Modal Setting */
+
+.modal-content {
+	border: none;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    
+}
+.modal-header {
+	padding: 12px 15px;
+	border-bottom-color: #e2e7eb;
+}
+.modal-header .close {
+	margin: -12px -15px -12px 0;
+	padding: 12px 15px;
+	line-height: 27px;
+}
+.modal-body {
+	padding: 15px;
+	
+}
+.modal-footer {
+	border-top-color: #e2e7eb;
+	padding: 14px 15px 15px;
+}
+.modal-message .modal-dialog {
+	width: 100%;
+	max-width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+	
+}
+.modal-message .modal-content {
+	border-radius: 0;
+	
+}
+.modal-message .modal-body,
+.modal-message .modal-header,
+.modal-message .modal-footer {
+	width: 60%;
+	border: none;
+	margin: 0 auto;
+	
+}
+.modal-backdrop {
+	background: rgba(0,0,0,0.5);
+}
+.modal-backdrop.fade.in {
+	opacity: 0.5;
+}
+
+
+.modal-dialog {
+    width:1000px;
+    
+  }

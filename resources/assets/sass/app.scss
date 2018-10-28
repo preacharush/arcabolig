@@ -1,0 +1,61 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.settings section {
+  float: left;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.settings section h2 {
+  color: #757575;
+  font-size: 18px;
+  margin-top: 0;
+}
+
+.settings section h2 a {
+  color: #008FFF;
+  font-size: 12px;
+}
+
+.settings section h3 {
+  font-size: 12px;
+  margin: 0;
+}
+
+.settings section p {
+  margin: 5px 0 15px;
+}
+
+.settings section .column {
+  display: block;
+  float: left;
+  margin-right: 20px;
+  overflow: hidden;
+  width: 200px;
+}
+
+.settings section .column.admin-column {
+  width: 400px;
+}
+
+.settings section .column a {
+  color: #009CDD;
+  cursor: pointer;
+}
+
+.settings section .column.dpa-column {
+  width: 500px;
+}
