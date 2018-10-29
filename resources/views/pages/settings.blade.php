@@ -17,7 +17,7 @@
         <!-- end breadcrumb -->
 
         <!-- begin page-header -->
-        <h1 class="page-header">Page Header <small>header small text goes here...</small></h1>
+        <h1 class="page-header">Indstillinger <small>Her kan du se og rette virksomhedens Indstillinger</small></h1>
         <!-- end page-header -->
 
         <!-- begin panel -->
@@ -37,149 +37,169 @@
                 </div>
         
             <div class="panel-body">
+
+                @php
+                    // echo "<pre>";
+                    // print_r($request->session()->all());
+                    // echo "</pre>";
+                @endphp
     
                             <section>
-                                
+
+                                @if((Auth::user()->company_id) == null)
+                                    <h2>Virksomhed <a href="/create-company" class="btn btn-sm btn-success">Opret</a></h2>
+                                @else
                                     <h2>Virksomhed <a href="#modal-dialog" class="btn btn-sm btn-success" id="rediger1" data-toggle="modal">Redigér</a></h2>
-                                
-                        
-                                        <div class="column">
-                                            <h3>Navn og adresse</h3>
-                                            <p>
-                                                {{$data->comp_name}}<br>
-                                                {{$data->address}}<br>
-                                                {{$data->city}} {{$data->zipcode}}<br>  
-                                            </p>
-                                                <h3>CVR-nr.</h3>
-                                                <p>{{$data->Comp_reg_nr}}</p>
-                                            
-                                        </div>
-                        
-                                        <div class="column">
-                                            
-                                                <h3>Telefon</h3>
-                                                <p>{{$data->phone}}</p>
-                                            
-                                        </div>
-                        
-                                        <div class="column">
-                                            
-                                                <h3>Kontakt-e-mail</h3>
-                                                <p>{{$data->email}}</p>
-                                            
-                                                <h3>E-mail- faktura til</h3>
-                                                <p>xxxxxxxxxxxxxxxxx</p>
-                                            
-                                        </div>
-                            </section>
+                                    
                             
-                                        <!-- #modal-dialog -->
-                                        <div class="modal fade" id="modal-dialog">
-                                            <div class="modal-dialog settings">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Navn - adresse - kontakt</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    </div>
-                                                    <div class="modal-body" >
+                                    <div class="column">
+                                        <h3>Navn og adresse</h3>
+                                        <p>
+                                            {{$data->comp_name}}<br>
+                                            {{$data->address}}<br>
+                                            {{$data->city}} {{$data->zipcode}}<br>  
+                                        </p>
+                                            <h3>CVR-nr.</h3>
+                                            <p>{{$data->Comp_reg_nr}}</p>
+                                        
+                                    </div>
+                    
+                                    <div class="column">
+                                        
+                                            <h3>Telefon</h3>
+                                            <p>{{$data->phone}}</p>
+                                        
+                                    </div>
+                    
+                                    <div class="column">
+                                        
+                                            <h3>Kontakt-e-mail</h3>
+                                            <p>{{$data->email}}</p>
+                                        
+                                            <h3>E-mail- faktura til</h3>
+                                            <p>xxxxxxxxxxxxxxxxx</p>
+                                        
+                                    </div>
+                              
+                                @endif
+                                
+                                    
+                            </section>
 
-                                                        <div id="company-info">
-                                                            
-                                                        <form action="{{ route('settings.store') }}" method="POST" >
-                                                            @csrf
+                            @if((Auth::user()->company_id) != null)
+                                <!-- #modal-dialog -->
+                                <div class="modal fade" id="modal-dialog">
+                                        <div class="modal-dialog settings">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Navn - adresse - kontakt</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                </div>
+                                                <div class="modal-body" >
 
-                                                                <div class="form__body__columns" >
-                                                                        <div class="panel active" >
-
-                                                                            <div class="form__body__col form__body__col--first" >
-
-                                                                                    <div class="controls form__ctrl form__ctrl--mandatory " >
-                                                                                        <label class="form__ctrl__title" >Navn</label>
-                                                                                            <input value="{{$data->comp_name}}"  type="text" name="comp_name"></div>
-
-                                                                                    <div class="controls form__ctrl form__ctrl--mandatory half" >
-                                                                                        <label class="form__ctrl__title">Adresse 1</label>
-                                                                                            <input value="{{$data->address}}" type="text" name="address" ></div>
-
-                                                                                    <div class="controls form__ctrl  half" >
-                                                                                        <label class="form__ctrl__title" >Adresse 2</label>
-                                                                                            <input value="{{$data->address2}}" type="text" name="address2" ></div>
-
-                                                                                    <div class="controls form__ctrl form__ctrl--mandatory half" >
-                                                                                        <label class="form__ctrl__title" >Postnr.</label>
-                                                                                            <input value="{{$data->zipcode}}" type="text" name="zipcode" ></div>
-
-                                                                                    <div class="controls form__ctrl form__ctrl--mandatory half" >
-                                                                                        <label class="form__ctrl__title" >By</label>
-                                                                                            <input value="{{$data->city}}" type="text" name="city" ></div>
-                                                                            
-                                                                            </div>
-
-                                                                            <div class="form__body__col" >
-
-                                                                                    <div class="controls form__ctrl  " >
-                                                                                        <label class="form__ctrl__title" >Land</label>
-                                                                                            <input value="{{$data->country}}"  type="text" name="country"></div>
-                                                                                        
-                                                                                    <div class="controls form__ctrl form__ctrl--mandatory " >
-                                                                                        <label class="form__ctrl__title" >Telefon</label>
-                                                                                            <input value="{{$data->phone}}"  type="text" name="phone"></div>
-                                                                                        
-                                                                                    <div class="controls form__ctrl  half" >
-                                                                                        <label class="form__ctrl__title" >Fax</label>
-                                                                                            <input  type="text"></div>
-                                                                                        
-                                                                                    <div class="controls form__ctrl  half" >
-                                                                                        <label class="form__ctrl__title" >Mobil</label>
-                                                                                            <input  type="text" name="mobil"></div>
-                                                                            
-                                                                            </div>
-                                                                            
-                                                                            <div class="form__body__col" >
-
-                                                                                    <div class="controls form__ctrl form__ctrl--mandatory " >
-                                                                                        <label class="form__ctrl__title" >Kontaktperson</label>
-                                                                                            <input value=""  type="text" name="contactPerson"></div>
-                                                                                        
-                                                                                    <div class="controls form__ctrl form__ctrl--mandatory " >
-                                                                                        <label class="form__ctrl__title" >Kontakt-e-mail</label> 
-                                                                                            <input value=""  type="text" name="contactEmail"></div>
-                                                                                        
-                                                                                    <div class="controls form__ctrl  " >
-                                                                                        <label class="form__ctrl__title" >Hjemmeside</label>
-                                                                                            <input  type="text" name="website"></div>
-                                                                            
-                                                                            </div>
-                                                                            
-                                                                            <div class="form__body__col form__body__col--last">
-
-                                                                                    <div class="controls form__ctrl form__ctrl--mandatory " >
-                                                                                        <label class="form__ctrl__title" >E-mail-faktura til</label>
-                                                                                            <input value=""  type="text"></div>
-                                                                                        
-                                                                                    <div class="controls form__ctrl  " >
-                                                                                        <label class="form__ctrl__title" >CVR-nr.</label>
-                                                                                            <input value="{{$data->Comp_reg_nr}}" type="text" name="comp_reg_nr"></div>
-                                                                            
-                                                                            </div>
-
-                                                                        </div>
-                                                                </div>
-                                                                
-                                                                <div class="modal-footer">
-                                                                        <button class="btn btn-white" data-dismiss="modal">Annuller</button>
-                                                                        <button  id="save" type="submit" class="btn btn-success" data-toggle="modal">Gem</button>
-                                                                </div>       
-                                                            
-                                                            </form>
+                                                    <div id="company-info">
                                                         
-                                                        </div>
+                                                    <form action="{{ route('settings.update', Auth::user->id;) }}" method="POST" >
+                                                        @csrf
+                                                        {{ method_field('PUT') }}
 
+                                                            <div class="form__body__columns" >
+                                                                    <div class="panel active" >
+
+                                                                        <div class="form__body__col form__body__col--first" >
+
+                                                                                <div class="controls form__ctrl form__ctrl--mandatory " >
+                                                                                    <label class="form__ctrl__title" >Navn</label>
+                                                                                        <input value="{{$data->comp_name}}"  type="text" name="comp_name"></div>
+
+                                                                                <div class="controls form__ctrl form__ctrl--mandatory half" >
+                                                                                    <label class="form__ctrl__title">Adresse 1</label>
+                                                                                        <input value="{{$data->address}}" type="text" name="address" ></div>
+
+                                                                                <div class="controls form__ctrl  half" >
+                                                                                    <label class="form__ctrl__title" >Adresse 2</label>
+                                                                                        <input value="{{$data->address2}}" type="text" name="address2" ></div>
+
+                                                                                <div class="controls form__ctrl form__ctrl--mandatory half" >
+                                                                                    <label class="form__ctrl__title" >Postnr.</label>
+                                                                                        <input value="{{$data->zipcode}}" type="text" name="zipcode" ></div>
+
+                                                                                <div class="controls form__ctrl form__ctrl--mandatory half" >
+                                                                                    <label class="form__ctrl__title" >By</label>
+                                                                                        <input value="{{$data->city}}" type="text" name="city" ></div>
+
+                                                                                        
+                                                                        
+                                                                        </div>
+
+                                                                        <div class="form__body__col" >
+
+                                                                                <div class="controls form__ctrl  " >
+                                                                                    <label class="form__ctrl__title" >Land</label>
+                                                                                        <input value="{{$data->country}}"  type="text" name="country"></div>
+                                                                                    
+                                                                                <div class="controls form__ctrl form__ctrl--mandatory " >
+                                                                                    <label class="form__ctrl__title" >Telefon</label>
+                                                                                        <input value="{{$data->phone}}"  type="text" name="phone"></div>
+                                                                                    
+                                                                                <div class="controls form__ctrl  half" >
+                                                                                    <label class="form__ctrl__title" >Fax</label>
+                                                                                        <input  type="text"></div>
+                                                                                    
+                                                                                <div class="controls form__ctrl  half" >
+                                                                                    <label class="form__ctrl__title" >Mobil</label>
+                                                                                        <input  type="text" name="mobil"></div>
+                                                                        
+                                                                        </div>
+                                                                        
+                                                                        <div class="form__body__col" >
+
+                                                                                <div class="controls form__ctrl form__ctrl--mandatory " >
+                                                                                    <label class="form__ctrl__title" >Kontaktperson</label>
+                                                                                        <input value=""  type="text" name="contactPerson"></div>
+                                                                                    
+                                                                                <div class="controls form__ctrl form__ctrl--mandatory " >
+                                                                                    <label class="form__ctrl__title" >Kontakt-e-mail</label> 
+                                                                                        <input value=""  type="text" name="contactEmail"></div>
+                                                                                    
+                                                                                <div class="controls form__ctrl  " >
+                                                                                    <label class="form__ctrl__title" >Hjemmeside</label>
+                                                                                        <input  type="text" name="website"></div>
+                                                                        
+                                                                        </div>
+                                                                        
+                                                                        <div class="form__body__col form__body__col--last">
+
+                                                                                <div class="controls form__ctrl form__ctrl--mandatory " >
+                                                                                    <label class="form__ctrl__title" >E-mail-faktura til</label>
+                                                                                        <input value=""  type="text"></div>
+                                                                                    
+                                                                                <div class="controls form__ctrl  " >
+                                                                                    <label class="form__ctrl__title" >CVR-nr.</label>
+                                                                                        <input value="{{$data->Comp_reg_nr}}" type="text" name="comp_reg_nr"></div>
+                                                                        
+                                                                        </div>
+
+                                                                    </div>
+                                                            </div>
+                                                            
+                                                            <div class="modal-footer">
+                                                                    <button class="btn btn-white" data-dismiss="modal">Annuller</button>
+                                                                    <button  id="save" type="submit" class="btn btn-success" data-toggle="modal">Gem</button>
+                                                            </div>       
+                                                        
+                                                        </form>
+                                                    
                                                     </div>
 
                                                 </div>
+
                                             </div>
                                         </div>
+                                    </div>
+                            @endif
+                            
+                                        
 
 
                             <section>

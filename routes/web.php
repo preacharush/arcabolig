@@ -36,4 +36,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
 
 });
+Route::get('/create-company', 'insertCompanyController@index');
+Route::post('/create-company.create', 'insertCompanyController@create')->name('create-company.create');;
+// Route::resource('/create-company','insertCompanyController');
+ 
 

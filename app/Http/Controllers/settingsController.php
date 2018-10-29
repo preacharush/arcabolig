@@ -27,9 +27,9 @@ class settingsController extends Controller
     {
         //   $company = address::all();
         //   return $company;
-        //   $see = $request->session()->all();
+        //   dd($request->session()->all());
         //   $request->session()->put('user', 'Preacher');
-        // dd(Auth::user()->id);
+        // dd(Auth::user()->company_id);
         $id = Auth::id();
         
         
@@ -86,21 +86,7 @@ class settingsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(), [
-
-            'comp_name'=> 'required',
-
-            'address'=> 'required',
-
-            'zipcode'=> 'required',
-
-            'city'=> 'required',
-
-            'country'=> 'required',
-
-            'phone'=> 'required'
-
-        ]);
+       
 
         
         // company::create(request(['comp_name', 'address']));
@@ -145,7 +131,23 @@ class settingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $this->validate(request(), [
+
+        //     'comp_name'=> 'required',
+
+        //     'address'=> 'required',
+
+        //     'zipcode'=> 'required',
+
+        //     'city'=> 'required',
+
+        //     'country'=> 'required',
+
+        //     'phone'=> 'required'
+
+        // ]);
+
+
     }
 
     /**

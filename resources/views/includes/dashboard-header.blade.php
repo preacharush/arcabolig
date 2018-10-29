@@ -44,7 +44,7 @@
                     <a href="javascript:;" class="dropdown-item">Edit Profile</a>
                     <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a>
                     <a href="javascript:;" class="dropdown-item">Calendar</a>
-                    <a href="{{ url('/settings') }}" class="dropdown-item">Setting</a>
+                    <a href="{{ url('/settings') }}" class="dropdown-item">Settings</a>
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); 
                         document.getElementById('logout-form').submit();" class="dropdown-item">{{ __('Logout') }}</a>
