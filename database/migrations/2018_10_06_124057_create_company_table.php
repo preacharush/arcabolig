@@ -16,11 +16,11 @@ class CreateCompanyTable extends Migration {
 		Schema::create('company', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('comp_reg_nr')->unique();
+			$table->string('comp_reg_nr', 100)->unique();
 			$table->string('comp_name')->nullable();
 			$table->string('email', 100)->nullable();
 			$table->string('phone', 45)->nullable();
-			$table->integer('address_id');
+			$table->integer('address_id')->nullable();
 			$table->timestamps();
 			$table->foreign('address_id')->references('id')->on('address')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});

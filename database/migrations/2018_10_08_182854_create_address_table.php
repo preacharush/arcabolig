@@ -18,7 +18,7 @@ class CreateAddressTable extends Migration
             $table->string('address', 150)->nullable();
             $table->string('address2', 150)->nullable($value = true);
             $table->string('district', 50)->nullable($value = true);
-            $table->integer('city_id');
+            $table->integer('city_id')->nullable();
             $table->timestamps();
             $table->foreign('city_id')->references('id')->on('city');
         });

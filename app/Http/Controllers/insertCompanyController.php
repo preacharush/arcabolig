@@ -81,6 +81,7 @@ class insertCompanyController extends Controller
             ->where('id', $userId )
             ->update(['company_id' => $companyId]);
 
+        // Redirect to Settings to view the information
             return redirect('/settings');
         
     }

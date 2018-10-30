@@ -99,9 +99,9 @@
 
                                                     <div id="company-info">
                                                         
-                                                    <form action="{{ route('settings.update', Auth::user->id;) }}" method="POST" >
+                                                    <form action="/settings/{{Auth::user()->id}}" method="POST" id='compInfoUpdateForm'>
                                                         @csrf
-                                                        {{ method_field('PUT') }}
+                                                        {{ method_field('patch') }}
 
                                                             <div class="form__body__columns" >
                                                                     <div class="panel active" >
@@ -110,45 +110,60 @@
 
                                                                                 <div class="controls form__ctrl form__ctrl--mandatory " >
                                                                                     <label class="form__ctrl__title" >Navn</label>
-                                                                                        <input value="{{$data->comp_name}}"  type="text" name="comp_name"></div>
+                                                                                        <input value="{{$data->comp_name}}"  type="text" name="comp_name">
+                                                                                </div>
 
                                                                                 <div class="controls form__ctrl form__ctrl--mandatory half" >
                                                                                     <label class="form__ctrl__title">Adresse 1</label>
-                                                                                        <input value="{{$data->address}}" type="text" name="address" ></div>
+                                                                                        <input value="{{$data->address}}" type="text" name="address" >
+                                                                                </div>
 
                                                                                 <div class="controls form__ctrl  half" >
                                                                                     <label class="form__ctrl__title" >Adresse 2</label>
-                                                                                        <input value="{{$data->address2}}" type="text" name="address2" ></div>
+                                                                                        <input value="{{$data->address2}}" type="text" name="address2" >
+                                                                                </div>
 
-                                                                                <div class="controls form__ctrl form__ctrl--mandatory half" >
-                                                                                    <label class="form__ctrl__title" >Postnr.</label>
-                                                                                        <input value="{{$data->zipcode}}" type="text" name="zipcode" ></div>
+                                                                                <div class="controls form__ctrl  " >
+                                                                                    <label class="form__ctrl__title" >CVR-nr.</label>
+                                                                                        <input value="{{$data->Comp_reg_nr}}" type="text" name="comp_reg_nr">
+                                                                                </div>
 
-                                                                                <div class="controls form__ctrl form__ctrl--mandatory half" >
-                                                                                    <label class="form__ctrl__title" >By</label>
-                                                                                        <input value="{{$data->city}}" type="text" name="city" ></div>
-
-                                                                                        
-                                                                        
                                                                         </div>
 
                                                                         <div class="form__body__col" >
 
-                                                                                <div class="controls form__ctrl  " >
-                                                                                    <label class="form__ctrl__title" >Land</label>
-                                                                                        <input value="{{$data->country}}"  type="text" name="country"></div>
-                                                                                    
+                                                                                <div class="controls form__ctrl">
+                                                                                        <label class="form__ctrl__title" >Land</label>
+                                                                                        <select class="form-control" name="country">
+                                                                                            
+                                                                                            @foreach ($countries as $country)
+                                                                                                @if ($country->id == 8)
+                                                                                                    <option value="{{$country->id}}" selected="selected">{{$country->country}}</option>
+                                                                                                @else
+                                                                                                    <option value="{{$country->id}}">{{$country->country}}</option>
+                                                                                                @endif
+                                                                                                
+                                                                                            @endforeach
+                                                                                            
+                                                                                        </select>
+                                                                                </div> 
+                                                                                
+                                                                                {{-- <div class="controls form__ctrl form__ctrl--mandatory half" >
+                                                                                        <label class="form__ctrl__title" >Postnr.</label>
+                                                                                            <input value="{{$data->zipcode}}" type="text" name="zipcode" >
+                                                                                </div> --}}
+
                                                                                 <div class="controls form__ctrl form__ctrl--mandatory " >
-                                                                                    <label class="form__ctrl__title" >Telefon</label>
-                                                                                        <input value="{{$data->phone}}"  type="text" name="phone"></div>
-                                                                                    
-                                                                                <div class="controls form__ctrl  half" >
-                                                                                    <label class="form__ctrl__title" >Fax</label>
-                                                                                        <input  type="text"></div>
-                                                                                    
-                                                                                <div class="controls form__ctrl  half" >
-                                                                                    <label class="form__ctrl__title" >Mobil</label>
-                                                                                        <input  type="text" name="mobil"></div>
+                                                                                        <label class="form__ctrl__title" >By</label>
+                                                                                        <select class="form-control" name="city">
+
+                                                                                                @foreach ($cities as $city)
+                                                                                                    <option value="{{$city->id}}" >{{$city->zipcode}} - {{$city->City}}</option>
+                                                                                                @endforeach
+
+                                                                                        </select>
+                                                                                </div>
+        
                                                                         
                                                                         </div>
                                                                         
@@ -156,15 +171,28 @@
 
                                                                                 <div class="controls form__ctrl form__ctrl--mandatory " >
                                                                                     <label class="form__ctrl__title" >Kontaktperson</label>
-                                                                                        <input value=""  type="text" name="contactPerson"></div>
+                                                                                        <input value=""  type="text" name="contactPerson">
+                                                                                </div>
                                                                                     
                                                                                 <div class="controls form__ctrl form__ctrl--mandatory " >
                                                                                     <label class="form__ctrl__title" >Kontakt-e-mail</label> 
-                                                                                        <input value=""  type="text" name="contactEmail"></div>
+                                                                                        <input value=""  type="text" name="contactEmail">
+                                                                                </div>
+
+                                                                                <div class="controls form__ctrl form__ctrl--mandatory " >
+                                                                                        <label class="form__ctrl__title" >Telefon</label>
+                                                                                            <input value="{{$data->phone}}"  type="text" name="phone">
+                                                                                </div>
+
+                                                                                <div class="controls form__ctrl  half" >
+                                                                                        <label class="form__ctrl__title" >Mobil</label>
+                                                                                            <input  type="text" name="mobil">
+                                                                                </div>
                                                                                     
                                                                                 <div class="controls form__ctrl  " >
                                                                                     <label class="form__ctrl__title" >Hjemmeside</label>
-                                                                                        <input  type="text" name="website"></div>
+                                                                                        <input  type="text" name="website">
+                                                                                </div>
                                                                         
                                                                         </div>
                                                                         
@@ -174,9 +202,7 @@
                                                                                     <label class="form__ctrl__title" >E-mail-faktura til</label>
                                                                                         <input value=""  type="text"></div>
                                                                                     
-                                                                                <div class="controls form__ctrl  " >
-                                                                                    <label class="form__ctrl__title" >CVR-nr.</label>
-                                                                                        <input value="{{$data->Comp_reg_nr}}" type="text" name="comp_reg_nr"></div>
+                                                                                
                                                                         
                                                                         </div>
 
@@ -250,12 +276,31 @@
         })
 
 
-        $('#save').on('click', function (e) {
+        // $('#save').on('click', function (e) {
            
-            $('#modal-dialog').modal('toggle');
+        //     $('#modal-dialog').modal('toggle');
             
-           e.preventDefault();
-        })
+        // //    e.preventDefault();
+        // })
+
+
+      $('#compInfoUpdateForm').submit(function(e){
+            var url=$(this).closest('form').attr('action');
+            // e.preventDefault();
+        
+            $.ajax({
+                url:'/settings/{{Auth::user()->id}}',
+                type:'post',
+                data:$('#compInfoUpdateForm').serialize(),
+                success:function(){
+                    $('#modal-dialog').modal('toggle');
+                    alert('')
+                    }
+                });
+                 
+        });
+
+        
 
     </script>
 

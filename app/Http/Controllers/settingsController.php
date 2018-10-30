@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\company;
 use App\address;
 use App\city;
+use App\country;
 use DB;
 use Auth;
 
@@ -30,6 +31,10 @@ class settingsController extends Controller
         //   dd($request->session()->all());
         //   $request->session()->put('user', 'Preacher');
         // dd(Auth::user()->company_id);
+
+        $countries = country::all();
+        $cities = city::all();
+        
         $id = Auth::id();
         
         
@@ -43,7 +48,7 @@ class settingsController extends Controller
             ->select('company.Comp_reg_nr','company.comp_name','company.email', 'company.phone',
                     'address.address','address.address2','address.district',
                     'city.city','city.zipcode',
-                    'country.country',
+                    'country.country','country_id',
                     'users.name', 'users.email as user_mail','users.id')
             ->first(); 
             //if get() is used ,one gets an collection which have to selected based on index or iterate throug it to get properties
@@ -53,7 +58,7 @@ class settingsController extends Controller
                 // dd($data);
         
             
-         return view('pages/settings', compact('data'));
+         return view('pages/settings', compact('data','cities', 'countries'));
         
         //
     }
@@ -131,21 +136,49 @@ class settingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $this->validate(request(), [
+       
+        $comp_name = $request->comp_name;
+        $address = $request->address;
+        $address2 = $request->address2;
+        $zipcode = $request->zipcode;
+        $cityId = $request->city;
+        $countryId = $request->country;
+        $phone = $request->phone;
+        $mobil = $request->mobil;
+        $contactPerson = $request->contactPerson;
+        $contactEmail = $request->contactEmail;
+        $website = $request->website;
+        $comp_reg_nr = $request->comp_reg_nr;
+        
+        
+       
+        
 
-        //     'comp_name'=> 'required',
+        // $update = DB::table('address')
+        //     ->join('company','company.address_id','=','address.id') //join COMPANY with ADDRESS
+        //     ->join('city', 'address.city_id', '=', 'city.id') //join ADDRESS with CITY
+        //     ->join('country','city.country_id','=','country.id') //join CITY with COUNTRY
+        //     ->join('users','users.company_id', '=', 'company.id') // join USERS with COMPANY
+        //     ->where('users.id', '=', $id)
+        //     ->update('company.Comp_reg_nr','company.comp_name','company.email', 'company.phone',
+        //             'address.address','address.address2','address.district',
+        //             'city.city','city.zipcode',
+        //             'country.country','country_id',
+        //             'users.name', 'users.email as user_mail','users.id');
 
-        //     'address'=> 'required',
+        
+        //this works perfectly
+        $update = DB::table('address')
+            ->join('company','company.address_id','=','address.id') //join COMPANY with ADDRESS
+            ->join('city', 'address.city_id', '=', 'city.id') //join ADDRESS with CITY
+            ->join('country','city.country_id','=','country.id') //join CITY with COUNTRY
+            ->join('users','users.company_id', '=', 'company.id') // join USERS with COMPANY
+            ->where('users.id', '=', $id)
+            ->update(['company.comp_name'=> $comp_name, 'address.address' => $address,'address.address2' =>$address2,
+                    'company.Comp_reg_nr'=> $comp_reg_nr, 'address.city_id'=>$cityId]);
+            
 
-        //     'zipcode'=> 'required',
-
-        //     'city'=> 'required',
-
-        //     'country'=> 'required',
-
-        //     'phone'=> 'required'
-
-        // ]);
+            //  dd($request->all());
 
 
     }
