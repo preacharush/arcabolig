@@ -47,7 +47,7 @@
                             
                             <tr>
                               <td>{{$user->id}}</td>
-                              <td> {{$user->name}} </td>
+                            <td><a href="{{route('users.edit', $user->id)}}" > {{$user->name}} </td>
                               <td>{{$user->email}}</td>
                               <td>{{$user->created_at}}</td>
                             </tr>

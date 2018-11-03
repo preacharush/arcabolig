@@ -17,7 +17,7 @@
     <!-- end breadcrumb -->
 
     <!-- begin page-header -->
-    <h1 class="page-header">Opret bruger</h1>
+    <h1 class="page-header">Rediger bruger</h1>
     <!-- end page-header -->
 
     <!-- begin panel -->
@@ -27,7 +27,7 @@
         </div>
         <div class="panel-body">
             <section>
-            <form action={{["UsersController@update", $user->id]}} method="POST" >
+                <form action="UsersController@update" method="PATCH" >
                     @csrf
                     
 

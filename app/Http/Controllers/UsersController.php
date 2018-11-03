@@ -17,11 +17,9 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        //get users data - REMEMBER TO MAKE IT DYNAMIC WITH COMPANY ID
-        $users = User::with('company')->where('company_id',1)->get();
+        //get users data - company id = session company_id
+        $users = User::with('company')->where('company_id', session()->get('company_id'))->get();
 
-        // dd($users);
-        // $users->where('company_id',1)->all()
 
         return view('pages/users-show', compact('users'));
     }
@@ -93,7 +91,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrfail($id);
+
+        return view('pages.users-edit', compact('user'));
     }
 
     /**
