@@ -13,19 +13,25 @@ return [
     |
     */
 
-    'menu' => [[
-		'icon' => 'fa fa-th-large',
-		'title' => 'XXXXXXXXXXX',
-		'url' => 'javascript:;',
-		'caret' => true,
-		'sub_menu' => [[
-			'url' => '/dashboard/v1',
-			'title' => 'XXXXXXXXX v1'
-		],[
-			'url' => '/dashboard/v2',
-			'title' => 'Dashboard v2'
-		]]
+		'menu' => [[
+			'icon' => 'fas fa-users',
+			'title' => 'Brugere',
+			'url' => '/users',
 
+		],[
+
+			'icon' => 'fa fa-th-large',
+			'title' => 'XXXXXXXXXXX',
+			'url' => 'javascript:;',
+			'caret' => true,
+			'sub_menu' => [[
+				'url' => '/dashboard/v1',
+				'title' => 'XXXXXXXXX v1'
+			],[
+				'url' => '/dashboard/v2',
+				'title' => 'Dashboard v2'
+			]]
+		]
 		
-	]]
+	]
 ];

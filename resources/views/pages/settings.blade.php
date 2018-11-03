@@ -144,7 +144,7 @@
                                                                                                 @endif
                                                                                                 
                                                                                             @endforeach
-                                                                                            
+
                                                                                         </select>
                                                                                 </div> 
                                                                                 
@@ -286,15 +286,16 @@
 
       $('#compInfoUpdateForm').submit(function(e){
             var url=$(this).closest('form').attr('action');
-            // e.preventDefault();
+            e.preventDefault();
         
             $.ajax({
-                url:'/settings/{{Auth::user()->id}}',
+                url:url,
                 type:'post',
                 data:$('#compInfoUpdateForm').serialize(),
                 success:function(){
                     $('#modal-dialog').modal('toggle');
-                    alert('')
+                    location.reload();
+                    
                     }
                 });
                  

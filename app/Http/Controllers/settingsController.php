@@ -136,7 +136,7 @@ class settingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+        //create variables from the request
         $comp_name = $request->comp_name;
         $address = $request->address;
         $address2 = $request->address2;
@@ -149,24 +149,14 @@ class settingsController extends Controller
         $contactEmail = $request->contactEmail;
         $website = $request->website;
         $comp_reg_nr = $request->comp_reg_nr;
-        
-        
-       
+
+
+        //validate
+
+    
         
 
-        // $update = DB::table('address')
-        //     ->join('company','company.address_id','=','address.id') //join COMPANY with ADDRESS
-        //     ->join('city', 'address.city_id', '=', 'city.id') //join ADDRESS with CITY
-        //     ->join('country','city.country_id','=','country.id') //join CITY with COUNTRY
-        //     ->join('users','users.company_id', '=', 'company.id') // join USERS with COMPANY
-        //     ->where('users.id', '=', $id)
-        //     ->update('company.Comp_reg_nr','company.comp_name','company.email', 'company.phone',
-        //             'address.address','address.address2','address.district',
-        //             'city.city','city.zipcode',
-        //             'country.country','country_id',
-        //             'users.name', 'users.email as user_mail','users.id');
-
-        
+        //Update statement
         //this works perfectly
         $update = DB::table('address')
             ->join('company','company.address_id','=','address.id') //join COMPANY with ADDRESS
