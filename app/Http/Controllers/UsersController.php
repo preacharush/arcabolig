@@ -93,6 +93,8 @@ class UsersController extends Controller
     {
         $user = User::findOrfail($id);
 
+        // dd($user);
+
         return view('pages.users-edit', compact('user'));
     }
 

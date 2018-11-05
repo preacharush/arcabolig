@@ -27,7 +27,7 @@
         </div>
         <div class="panel-body">
             <section>
-                <form action="UsersController@update" method="PATCH" >
+                <form action="" method="PATCH" >
                     @csrf
                     
 
@@ -38,17 +38,17 @@
 
                                     <div class="controls form__ctrl form__ctrl--mandatory " >
                                         <label class="form__ctrl__title" >Navn</label>
-                                            <input value=""  type="text" name="name">
+                                    <input value=""  type="text" name="name" placeholder="{{$user->name}}">
                                     </div>
 
                                     <div class="controls form__ctrl form__ctrl--mandatory half" >
                                         <label class="form__ctrl__title">E-mail</label>
-                                            <input value="" type="email" name="email" >
+                                            <input value="" type="email" name="email" placeholder="{{$user->email}}" >
                                     </div>
 
                                     <div class="controls form__ctrl  half" >
                                         <label class="form__ctrl__title" >Kode</label>
-                                            <input value="" type="password" name="password" >
+                                            <input value="" type="password" name="password" placeholder="keep it safe" >
                                     </div>
                             
                             </div>
