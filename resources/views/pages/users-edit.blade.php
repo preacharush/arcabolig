@@ -27,8 +27,11 @@
         </div>
         <div class="panel-body">
             <section>
-                <form action="" method="PATCH" >
+            <form action="{{url("users/$user->id")}}" method="POST" >
                     @csrf
+                    {{ method_field('patch') }}
+
+                    {{-- {{'UsersController@update', $user->id}} --}}
                     
 
                     <div class="form__body__columns" >
@@ -57,7 +60,7 @@
                     </div>
                     
                     <div class="modal-footer">
-                            <button  id="save" type="submit" class="btn btn-success" data-toggle="modal">Opret</button>
+                            <button  id="save" type="submit" class="btn btn-success" data-toggle="modal">Gem</button>
                     </div>       
                 
                 </form>

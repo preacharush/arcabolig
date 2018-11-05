@@ -18,7 +18,9 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         //get users data - company id = session company_id
-        $users = User::with('company')->where('company_id', session()->get('company_id'))->get();
+        $users = User::with('company')
+                    ->where('company_id', session()->get('company_id'))
+                    ->get();
 
 
         return view('pages/users-show', compact('users'));
@@ -93,7 +95,7 @@ class UsersController extends Controller
     {
         $user = User::findOrfail($id);
 
-        // dd($user);
+        
 
         return view('pages.users-edit', compact('user'));
     }
@@ -107,7 +109,43 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrfail($id);
+
+        //validate form indput
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|max:150',
+            'password' => 'required|min:5',
+        ]);
+
+        //create variables from the request
+        $name = $request->name;
+        $email = $request->email;
+        $password = $request->password;
+
+        $company_id = DB::table('company')
+        ->join('users','users.company_id', '=', 'company.id') // join USERS with COMPANY
+        ->where('users.id', '=', $id)
+        ->select('users.company_id')
+        ->first();
+
+
+        // User data in one array
+        $userData = [
+            'name' => $name,
+            'email' => $email,
+            'password' => bcrypt($password),
+            'company_id'=> $company_id->company_id
+        ];
+        
+        //  dd($userData);
+
+         $update = DB::table('users')
+         ->where('users.id', '=', $user->id)
+         ->update($userData);
+
+
+         return redirect('users');
     }
 
     /**
@@ -118,6 +156,13 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrfail($id);
+
+        $update = DB::table('users')
+         ->where('users.id', '=', $user->id)
+         ->delete();
+
+         return redirect('users');
+
     }
 }

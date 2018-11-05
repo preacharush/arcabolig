@@ -45,12 +45,19 @@
                           
                             @foreach ($users as $user)
                             
-                            <tr>
-                              <td>{{$user->id}}</td>
-                            <td><a href="{{route('users.edit', $user->id)}}" > {{$user->name}} </td>
-                              <td>{{$user->email}}</td>
-                              <td>{{$user->created_at}}</td>
-                            </tr>
+                              <tr>
+                                <td>{{$user->id}}</td>
+                                <td>{{$user->name}} </td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->created_at}}</td>  
+                                <td>
+                                  <form action="{{route('users.destroy', $user->id)}}" method="POST" id='deleteForm'> {{ method_field('DELETE') }} @csrf
+                                    <div class="btn btn-info btn-sm"><a href="{{route('users.edit', $user->id)}}" style="color:inherit;"> Rediger </div>
+                                    |
+                                      <button  type="submit" class="btn btn-danger btn-sm" style="text-decoration: none;"> slet </button>
+                                  </form> 
+                                </td>   
+                              </tr>
 
                             @endforeach
                           
@@ -71,7 +78,29 @@
     @endsection
 
     @section('pageLevelJs')
-    
+    <script>
+     
+
+     $('#deleteForm').submit(function(e){
+           var url=$(this).closest('form').attr('action');
+           e.preventDefault();
+       
+           $.ajax({
+               url:url,
+               type:'post',
+               data:$('#deleteForm').serialize(),
+               success:function(){
+                   $('#modal-dialog').modal('toggle');
+                   location.reload();
+                   
+                   }
+               });
+                
+       });
+
+       
+
+   </script>
 
         <!-- ================== BEGIN PAGE LEVEL JS ================== -->
 	{{-- <script src="../assets/plugins/gritter/js/jquery.gritter.js"></script> --}}

@@ -27,7 +27,7 @@
         </div>
         <div class="panel-body">
             <section>
-            <form action={{["UsersController@update", $user->id]}} method="POST" >
+                <form action="/users" method="POST" >
                     @csrf
                     
 
