@@ -16,7 +16,7 @@ class PagesController extends Controller
         $this->middleware('guest:admin');
     }
     
-    public function userdashboard()
+    public function userdashboard(Request $request)
     {
         
         //tjekk iff company id is null (new users only)
@@ -33,18 +33,23 @@ class PagesController extends Controller
             $companyId = DB::table('company')
             ->join('users','users.company_id', '=', 'company.id') // join USERS with COMPANY
             ->where('users.id', '=', Auth::id())
-            ->select('company_id')
-            ->first()->company_id;
+            ->select('company_id', 'comp_name')
+            ->first();
+
+            
 
             //set Company id as session variable
-             session(['company_id' => $companyId]);
+             session(['company_id' => $companyId->company_id, 'comp_name'=>$companyId->comp_name]);
 
+    
         }
-        
+       
+        //  dd(session());
+            
         
         // dd(session()->get('company_id'));
 
-        return view('pages/user-dashboard');
+        return view('pages/user-dashboard',compact('companyId'));
     }
 
     

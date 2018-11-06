@@ -38,7 +38,8 @@
                     <div class="image image-icon bg-black text-grey-darker">
                         <i class="fa fa-user"></i>
                     </div>
-                    <span class="d-none d-md-inline">Domus projekt</span> <b class="caret"></b>
+                    {{-- Logged ind company --}}
+                    <span class="d-none d-md-inline">{{session()->get('comp_name') ? session()->get('comp_name') : 'Company not created' }}</span> <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="javascript:;" class="dropdown-item">Edit Profile</a>
