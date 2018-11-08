@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('company_id')->nullable();
             $table->timestamps();
             $table->foreign('company_id')->references('id')->on('company')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->engine = 'InnoDB';
         });
     }
 

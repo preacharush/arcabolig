@@ -19,12 +19,25 @@ return [
 			'url' => 'javascript:;',
 			'caret' => true,
 			'sub_menu' => [[
-				'url' => '/dashboard/v1',
+				'url' => '',
 				'title' => 'Dashboard v1'
 			],[
 				'url' => '/dashboard/v2',
 				'title' => 'Dashboard v2'
 			]]
+		],[
+			'icon' => 'fa fa-align-left',
+			'title' => 'Klienter',
+			'url' => 'javascript:;',
+			'caret' => true,
+			'sub_menu' => [[
+				'url' => '/client',
+				'title' => 'Oversigt'
+			],[
+				'url' => 'javascript:;',
+				'title' => 'Lejemål'
+			]]
+
 		],[
 			'icon' => 'fa fa-align-left',
 			'title' => 'Ejendom',

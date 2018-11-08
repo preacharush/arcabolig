@@ -22,5 +22,12 @@ class address extends Model
             return $this->hasOne(city::class, 'id', 'city_id');
             
         }
+
+        public function property()
+        {
+            
+        return $this->belongsToMany('App\Property','property_has_address','address_id','property_id');
+
+        }
     
 }

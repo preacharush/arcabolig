@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminsTable extends Migration
+class CreatePropertiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('properties', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email', 250)->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->integer('property_unique_id')->unique();
+            $table->string('property_name', 250);
             $table->timestamps();
             $table->engine = 'InnoDB';
+            //Property has a many 2 many relation with address "property_has_address"
         });
     }
 
@@ -32,6 +30,6 @@ class CreateAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('properties');
     }
 }

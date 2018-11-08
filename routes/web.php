@@ -43,5 +43,8 @@ Route::post('/create-company.create', 'insertCompanyController@create')->name('c
 // Route::resource('/create-company','insertCompanyController');
 
 // USERS - show - Create - Edit - Delete
-Route::resource('/users','UsersController'); 
+Route::resource('/users','UsersController');
+
+// Client - show - Create - Edit - Delete
+Route::resource('/client','ClientController'); 
 

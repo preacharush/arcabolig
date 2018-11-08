@@ -23,6 +23,7 @@ class CreateCompanyTable extends Migration {
 			$table->integer('address_id')->nullable();
 			$table->timestamps();
 			$table->foreign('address_id')->references('id')->on('address')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->engine = 'InnoDB';
 		});
 	}
 

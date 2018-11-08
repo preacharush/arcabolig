@@ -21,6 +21,7 @@ class CreateCityTable extends Migration {
 			$table->integer('Country_id');
 			$table->timestamps();
 			$table->foreign('country_id')->references('id')->on('country')->onUpdate('CASCADE')->onDelete('CASCADE');
+			$table->engine = 'InnoDB';
 		});
 	}
 

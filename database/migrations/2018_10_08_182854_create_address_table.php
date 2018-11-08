@@ -21,6 +21,7 @@ class CreateAddressTable extends Migration
             $table->integer('city_id')->nullable();
             $table->timestamps();
             $table->foreign('city_id')->references('id')->on('city');
+            $table->engine = 'InnoDB';
         });
     }
 

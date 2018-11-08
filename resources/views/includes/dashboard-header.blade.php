@@ -38,7 +38,7 @@
                     <div class="image image-icon bg-black text-grey-darker">
                         <i class="fa fa-user"></i>
                     </div>
-                    {{-- Logged ind company --}}
+                    {{-- Logged ind company in headder --}}
                     <span class="d-none d-md-inline">{{session()->get('comp_name') ? session()->get('comp_name') : 'Company not created' }}</span> <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
