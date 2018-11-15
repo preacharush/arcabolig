@@ -52,11 +52,11 @@
                                 <td>{{$user->created_at}}</td>  
                                 <td>
                                   <form action="{{route('users.destroy', $user->id)}}" method="POST" id='deleteForm'> {{ method_field('DELETE') }} @csrf
-                                    <div class="btn btn-info btn-sm">Rediger <a href="{{route('users.edit', $user->id)}}" style="color:inherit;"> 
-                                    
+                                    <div class="btn btn-info btn-sm"> 
+                                      <a href="{{route('users.edit', $user->id)}}"  style="color:inherit;">Rediger</a>
                                     </div>
                                     |
-                                      <button  type="submit"  class="btn btn-danger btn-sm"  > slet </button>
+                                    <button  type="submit"  class="btn btn-danger btn-sm"> slet </button>
                                   </form> 
                                 </td>   
                               </tr>

@@ -3,84 +3,78 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Client;
+use DB;
+use App\address;
+use App\city;
+use App\country;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+    public function index(Request $request)
     {
+        // dd(session()->get('company_id'));
         
+        //get client data - company id = session company_id
+        $clients = DB::table('clients')
+                    ->join('address', 'address.id','=', 'clients.address_id')
+                    ->join('company_has_clients','clients.id','=','company_has_clients.client_id')
+                    ->join('company','company.id','=','company_has_clients.company_id')
+                    ->where('company.id', '=', session()->get('company_id'))
+                    ->select('clients.client_reg_nr', 'clients.client_name','address.address', 'clients.client_contact', 'clients.client_phone1', 'clients.email',
+                                'clients.created_at','clients.id' )
+                    ->get();
 
-        return view('pages/clients/clients-show');
+            // dd($clients);
+
+        return view('pages/clients/clients-show',compact('clients'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
-        //
+
+        $countries = country::all();
+        $cities = city::all();
+        $clients = Client::findOrfail($id);
+
+        return view('pages/clients/clients-edit',compact('clients','cities','countries'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
-        //
+        $clients = Client::findOrfail($id);
+
+        $update = DB::table('clients')
+         ->where('clients.id', '=', $clients->id)
+         ->delete();
+
+         return redirect('client');
     }
 }

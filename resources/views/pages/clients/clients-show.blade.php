@@ -35,6 +35,9 @@
                             <tr>
                               <th>ID</th>
                               <th>Navn</th>
+                              <th>Adr</th>
+                              <th>Kontakt person</th>
+                              <th>TLF</th>
                               <th>E-mail</th>
                               <th>Oprettet</th>
                             </tr>
@@ -43,30 +46,33 @@
 
                           <tbody>
                           
-                            {{-- @foreach ( as ) --}}
-                            
+                            @foreach ($clients as $client )
+                             
                               <tr>
-                                <td>1</td>
-                                <td>2 </td>
-                                <td>3</td>
-                                <td>4</td>  
+                                <td>{{$client->client_reg_nr}}</td>
+                                <td>{{$client->client_name}}</td>
+                                <td>{{$client->address}}</td>
+                                <td>{{$client->client_contact}}</td>  
+                                <td>{{$client->client_phone1}}</td>  
+                                <td>{{$client->email}}</td>  
+                                <td>{{date('d M, Y',strtotime($client->created_at))}}</td>  
                                 <td>
-                                  <form action="" method="POST" id='deleteForm'> {{ method_field('DELETE') }} @csrf
-                                    <div class="btn btn-info btn-sm">Rediger <a href="" style="color:inherit;"> 
-                                    
+                                  <form action="{{route('client.destroy', $client->id)}}" method="POST" id='deleteClientForm'> {{ method_field('DELETE') }} @csrf
+                                    <div class="btn btn-info btn-sm"> 
+                                      <a href="{{route('client.edit', $client->id)}}" style="color:inherit;">Rediger </a> 
                                     </div>
                                     |
-                                      <button  type="submit"  class="btn btn-danger btn-sm"  > slet </button>
+                                      <button  type="submit"  class="btn btn-danger btn-sm" > slet </button>
                                   </form> 
                                 </td>   
                               </tr>
 
-                            {{-- @endforeach --}}
+                            @endforeach
                           
                           </tbody>
 
                           <div class="modal-footer">
-                            <a   href="/users/create"  class="btn btn-success">Opret</a>
+                            <a   href="{{route('client.create')}}"  class="btn btn-success">Opret</a>
 
                           </div>
 
@@ -83,7 +89,7 @@
     <script>
      
 
-     $('#deleteForm').submit(function(e){
+     $('#deleteClientForm').submit(function(e){
            var url=$(this).closest('form').attr('action');
            e.preventDefault();
        

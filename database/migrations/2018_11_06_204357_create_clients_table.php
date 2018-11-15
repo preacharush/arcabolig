@@ -20,8 +20,11 @@ class CreateClientsTable extends Migration
             $table->string('client_contact')->nullable();
             $table->integer('client_phone1')->nullable();
             $table->string('email', 150)->nullable();
+            $table->integer('address_id');
             $table->timestamps();
+            $table->foreign('address_id')->references('id')->on('address')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->engine = 'InnoDB';
+
             //Their is a foreign key in the MANY 2 MANY relation "client_has_property" table
         });
 

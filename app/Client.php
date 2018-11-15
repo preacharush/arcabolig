@@ -20,4 +20,10 @@ class Client extends Model
     {
         return $this->belongsToMany('app\Property','client_has_property','client_id','property_id');
     }
+
+    public function address() {
+
+        return $this->belongsTo(address::class,'address_id','id' );
+    
+    }
 }

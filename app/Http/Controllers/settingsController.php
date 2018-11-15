@@ -70,17 +70,7 @@ class settingsController extends Controller
      */
     public function create(Request $request)
     {
-        // THIS WORKS--->
-
-        // $ins = DB::insert('insert into company (comp_reg_nr, comp_name, address_id) 
-        //                 values (?, ?, ?)
-        //                 on duplicate key update 
-        //                 comp_name = values(comp_name),
-        //                 address_id = values(address_id)'
-        //                 , ['123456','beast', 2]
-        //                 );
-
-        // dd($ins);
+       
     }
 
     /**

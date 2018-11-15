@@ -14,12 +14,13 @@ class CreatePropertyHasAddressesTable extends Migration
     public function up()
     {
         Schema::create('property_has_addresses', function (Blueprint $table) {
-            $table->integer('property_id');
-            $table->integer('address_id');
+            $table->engine = 'MyISAM';
+            $table->integer('properties_id')->unsigned()->nullable();
+            $table->integer('address_id')->unsigned()->nullable();
             $table->timestamps();
-            $table->foreign('property_id')->references('id')->on('property')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('properties_id')->references('id')->on('properties')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('address_id')->references('id')->on('address')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->engine = 'InnoDB';
+            
         });
     }
 

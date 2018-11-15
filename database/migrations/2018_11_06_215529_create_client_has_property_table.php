@@ -18,7 +18,7 @@ class CreateClientHasPropertyTable extends Migration
             $table->integer('property_id');
             $table->timestamps();
             $table->foreign('client_id')->references('id')->on('client')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign('property_id')->references('id')->on('property')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('property_id')->references('id')->on('properties')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->engine = 'InnoDB';
         });
     }

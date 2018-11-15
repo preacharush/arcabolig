@@ -8,7 +8,7 @@ class address extends Model
 {
     protected $table = 'address';
 
-    protected $fillable = ['address', 'address2','district'];
+    protected $fillable = ['address', 'address2','district',];
     
 
         public function company() {
@@ -27,6 +27,12 @@ class address extends Model
         {
             
         return $this->belongsToMany('App\Property','property_has_address','address_id','property_id');
+
+        }
+
+        public function client() {
+        
+            return $this->hasMany(Client::class, 'address_id','id');
 
         }
     
