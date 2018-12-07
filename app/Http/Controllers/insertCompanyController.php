@@ -36,6 +36,7 @@ class insertCompanyController extends Controller
      */
     public function create(Request $request)
     {
+        // grap post and create variables
         $comp_name = $request->comp_name;
         $address = $request->address;
         $address2 = $request->address2;
@@ -58,7 +59,7 @@ class insertCompanyController extends Controller
 
         ];
 
-        // Create grab address ID
+        // Create in table and grab address ID
         $address_id = DB::table('address')->insertGetId( $addressData );
 
         // Create company with address ID
@@ -71,12 +72,13 @@ class insertCompanyController extends Controller
 
         ];
 
-        // grab company ID
+        // Create company in table and grab company ID
         $companyId = DB::table('company')->insertGetId( $companyData );
 
-        // Update user with company ID
+        //Get user id  
         $userId = Auth::user()->id;
-
+       
+        // Update user with company ID
        DB::table('users')
             ->where('id', $userId )
             ->update(['company_id' => $companyId]);

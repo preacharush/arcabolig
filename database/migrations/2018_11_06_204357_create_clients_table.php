@@ -19,7 +19,7 @@ class CreateClientsTable extends Migration
             $table->string('client_name')->nullable();
             $table->string('client_contact')->nullable();
             $table->integer('client_phone1')->nullable();
-            $table->string('email', 150)->nullable();
+            $table->string('client_email', 150)->nullable();
             $table->integer('address_id');
             $table->timestamps();
             $table->foreign('address_id')->references('id')->on('address')->onUpdate('CASCADE')->onDelete('CASCADE');

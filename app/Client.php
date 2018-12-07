@@ -13,7 +13,7 @@ class Client extends Model
      * @var array
      */
     protected $fillable = [
-        'client_reg_nr', 'client_name', 'client_contact','client_phone1','client_phone2','email'
+        'client_reg_nr', 'client_name', 'client_contact','client_phone1','client_phone2','client_email'
     ];
 
     public function property()

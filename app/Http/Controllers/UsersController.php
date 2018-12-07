@@ -140,6 +140,7 @@ class UsersController extends Controller
         
         //  dd($userData);
 
+        // Update Data
          $update = DB::table('users')
          ->where('users.id', '=', $user->id)
          ->update($userData);

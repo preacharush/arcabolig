@@ -17,7 +17,7 @@
     <!-- end breadcrumb -->
 
     <!-- begin page-header -->
-    <h1 class="page-header">Rediger klient</h1>
+    <h1 class="page-header">Opret klient</h1>
     <!-- end page-header -->
 
     <!-- begin panel -->
@@ -27,9 +27,9 @@
         </div>
         <div class="panel-body">
             <section>
-            <form action="{{url("client/$clients->id")}}" method="POST" >
+            <form action="{{url("client")}}" method="POST" >
                     @csrf
-                    {{ method_field('patch') }}
+                   
 
                     {{-- {{'UsersController@update', $user->id}} --}}
                     <div class="form__body__columns" >
@@ -39,17 +39,17 @@
 
                                         <div class="controls form__ctrl form__ctrl--mandatory " >
                                             <label class="form__ctrl__title" >Klient Reg. Nr.</label>
-                                                <input  value="{{$clients->client_reg_nr}}"  type="text" name="client_reg_nr" placeholder="">
+                                                <input  value=""  type="text" name="client_reg_nr" placeholder="">
                                         </div>
 
                                         <div class="controls form__ctrl  " >
                                             <label class="form__ctrl__title" >Navn</label>
-                                                <input value="{{$clients->client_name}}" type="text" name="client_name" placeholder="">
+                                                <input value="" type="text" name="client_name" placeholder="">
                                         </div>
 
                                         <div class="controls form__ctrl form__ctrl--mandatory half" >
                                             <label class="form__ctrl__title">Adresse</label>
-                                                <input value="{{$address->address}}" type="text" name="address" placeholder="" >
+                                                <input value="" type="text" name="address" placeholder="" >
                                         </div>
 
                                         
@@ -99,17 +99,17 @@
 
                                         <div class="controls form__ctrl form__ctrl--mandatory " >
                                             <label class="form__ctrl__title" >Kontaktperson</label>
-                                        <input value="{{$clients->client_contact}}"  type="text" name="client_contact" placeholder="">
+                                        <input value=""  type="text" name="client_contact" placeholder="">
                                         </div>
                                             
                                         <div class="controls form__ctrl form__ctrl--mandatory " >
                                             <label class="form__ctrl__title" >E-mail</label> 
-                                                <input value="{{$clients->client_email}}"  type="text" name="client_email" placeholder="">
+                                                <input value=""  type="text" name="client_email" placeholder="">
                                         </div>
 
                                         <div class="controls form__ctrl form__ctrl--mandatory " >
                                                 <label class="form__ctrl__title" >Telefon</label>
-                                                    <input value="{{$clients->client_phone1}}"  type="text" name="client_phone1" placeholder="">
+                                                    <input value=""  type="text" name="client_phone1" placeholder="">
                                         </div>
 
                                         <div class="controls form__ctrl  half" >

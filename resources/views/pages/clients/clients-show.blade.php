@@ -54,7 +54,7 @@
                                 <td>{{$client->address}}</td>
                                 <td>{{$client->client_contact}}</td>  
                                 <td>{{$client->client_phone1}}</td>  
-                                <td>{{$client->email}}</td>  
+                                <td>{{$client->client_email}}</td>  
                                 <td>{{date('d M, Y',strtotime($client->created_at))}}</td>  
                                 <td>
                                   <form action="{{route('client.destroy', $client->id)}}" method="POST" id='deleteClientForm'> {{ method_field('DELETE') }} @csrf
