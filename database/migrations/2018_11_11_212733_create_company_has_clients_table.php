@@ -14,7 +14,7 @@ class CreateCompanyHasClientsTable extends Migration
     public function up()
     {
         Schema::create('company_has_clients', function (Blueprint $table) {
-            $table->engine = 'MyISAM';
+            $table->engine = 'innodb';
             $table->integer('client_id')->unsigned()->nullable();
             $table->integer('company_id')->unsigned()->nullable();
             $table->timestamps();

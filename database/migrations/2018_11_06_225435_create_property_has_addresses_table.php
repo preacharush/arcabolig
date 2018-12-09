@@ -14,7 +14,7 @@ class CreatePropertyHasAddressesTable extends Migration
     public function up()
     {
         Schema::create('property_has_addresses', function (Blueprint $table) {
-            $table->engine = 'MyISAM';
+            $table->engine = 'InnoDB';
             $table->integer('properties_id')->unsigned()->nullable();
             $table->integer('address_id')->unsigned()->nullable();
             $table->timestamps();
