@@ -8,7 +8,7 @@ class postalcodes extends Model
 {
     protected $table = 'postal_codes';
 
-    protected $fillable = ['created_at', 'updated_at'];
+    protected $fillable = ['country_a2','denomination','format','Regex','fixedcode','created_at', 'updated_at'];
 
     
     

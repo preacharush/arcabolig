@@ -34,6 +34,7 @@ class CreateCountriesTable extends Migration
             $table->timestamps()->nullable();
             
             $table->engine = 'InnoDB';
+            $table->collation = 'utf8_unicode_ci';
         });
     }
 

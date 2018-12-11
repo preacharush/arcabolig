@@ -22,6 +22,7 @@ class CreateCityTable extends Migration {
 			$table->timestamps();
 			$table->foreign('country_id')->references('id')->on('country')->onUpdate('CASCADE')->onDelete('CASCADE');
 			$table->engine = 'InnoDB';
+			$table->collation = 'utf8_unicode_ci';
 		});
 	}
 

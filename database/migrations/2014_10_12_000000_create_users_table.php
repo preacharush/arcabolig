@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->foreign('company_id')->references('id')->on('company')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->engine = 'InnoDB';
+            $table->collation = 'utf8_unicode_ci';
         });
     }
 

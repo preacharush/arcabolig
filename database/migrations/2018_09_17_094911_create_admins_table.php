@@ -22,6 +22,7 @@ class CreateAdminsTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->engine = 'InnoDB';
+            $table->collation = 'utf8_unicode_ci';
         });
     }
 

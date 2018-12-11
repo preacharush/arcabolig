@@ -20,6 +20,7 @@ class CreateClientHasPropertyTable extends Migration
             $table->foreign('client_id')->references('id')->on('client')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('property_id')->references('id')->on('properties')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->engine = 'InnoDB';
+            $table->collation = 'utf8_unicode_ci';
         });
     }
 

@@ -19,10 +19,11 @@ class CreatePostalCodesTable extends Migration
             $table->string('format', 10)->nullable();
             $table->string('Regex', 150)->nullable();
             $table->boolean('fixedcode')->nullable();
-            $table->timestamp('created_at')->nullable();
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->foreign('country_a2')->references('country_iso_a2')->on('countries')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->engine = 'InnoDB';
+            $table->collation = 'utf8_unicode_ci';
         });
     }
 

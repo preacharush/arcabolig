@@ -19,6 +19,7 @@ class CreatePropertiesTable extends Migration
             $table->string('property_name', 250);
             $table->timestamps();
             $table->engine = 'InnoDB';
+            $table->collation = 'utf8_unicode_ci';
             //Property has a many 2 many relation with address "property_has_address"
         });
     }

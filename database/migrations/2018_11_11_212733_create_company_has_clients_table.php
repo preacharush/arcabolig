@@ -14,12 +14,12 @@ class CreateCompanyHasClientsTable extends Migration
     public function up()
     {
         Schema::create('company_has_clients', function (Blueprint $table) {
-            $table->engine = 'innodb';
             $table->integer('client_id')->unsigned()->nullable();
             $table->integer('company_id')->unsigned()->nullable();
             $table->timestamps();
             $table->foreign('client_id')->references('id')->on('clients')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('company_id')->references('id')->on('company')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->engine = 'innoDB';
         });
     }
 

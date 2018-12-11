@@ -18,6 +18,7 @@ class CreateCountryTable extends Migration {
 			$table->increments('id');
 			$table->string('country', 50)->nullable();
 			$table->engine = 'InnoDB';
+			$table->collation = 'utf8_unicode_ci';
 		});
 	}
 

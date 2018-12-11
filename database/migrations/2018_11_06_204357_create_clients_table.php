@@ -24,6 +24,7 @@ class CreateClientsTable extends Migration
             $table->timestamps();
             $table->foreign('address_id')->references('id')->on('address')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->engine = 'InnoDB';
+            $table->collation = 'utf8_unicode_ci';
 
             //Their is a foreign key in the MANY 2 MANY relation "client_has_property" table
         });

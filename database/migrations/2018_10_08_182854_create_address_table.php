@@ -22,6 +22,7 @@ class CreateAddressTable extends Migration
             $table->timestamps();
             $table->foreign('city_id')->references('id')->on('city');
             $table->engine = 'InnoDB';
+            $table->collation = 'utf8_unicode_ci';
         });
     }
 
