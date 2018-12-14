@@ -30,12 +30,7 @@
             <!-- begin sidebar nav -->
             <ul class="nav">
                 <li class="nav-header">Navigation</li>
-                <li class="active">
-                    <a href="/dashboard">
-                        <i class="fa fa-th-large"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
+                
 
                 
                 <ul class="nav">
@@ -82,7 +77,7 @@
                             return $subMenu;
                         }
                         
-                        foreach (config('settings-sidebar.menu') as $key => $menu) {
+                        foreach (config('sidebar-master-info.menu') as $key => $menu) {
                             $GLOBALS['parent_active'] = '';
                             
                             $hasSub = (!empty($menu['sub_menu'])) ? 'has-sub' : '';

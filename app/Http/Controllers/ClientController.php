@@ -39,6 +39,7 @@ class ClientController extends Controller
         $cities = city::all();
 
         return view('pages/clients/clients-create', compact('countries', 'cities'));
+         
     }
 
    
@@ -94,7 +95,7 @@ class ClientController extends Controller
         DB::table('company_has_clients')->insertGetId( $companyClientId );
 
         // Redirect to Settings to view the information
-        return redirect('/client');
+        return redirect()->route('client.index');
 
         
     }
@@ -169,7 +170,7 @@ class ClientController extends Controller
         ->update($addressData);
 
 
-        return redirect('client');
+        return redirect()->route('client.index');
     }
 
    
@@ -190,6 +191,6 @@ class ClientController extends Controller
         ->where('clients.id', '=', $clients->id)
         ->delete();
 
-         return redirect('client');
+         return redirect()->route('client.index');
     }
 }

@@ -27,8 +27,8 @@
         </div>
         <div class="panel-body">
             <section>
-            <form action="{{url("users/$user->id")}}" method="POST" >
-                    @csrf
+            <form action="{{route('users.update', $user->id)}}" method="POST" >
+                    @csrf 
                     {{ method_field('patch') }}
 
                     {{-- {{'UsersController@update', $user->id}} --}}

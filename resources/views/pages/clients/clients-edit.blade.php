@@ -1,4 +1,4 @@
-@extends('layouts\dashboard-app', ['sidebarHide' => false], ['sidebarSettings' => false] )
+@extends('layouts\dashboard-app', ['sidebarHide' => true], ['sidebarAdmin' => true] )
 
 @section('title', 'page with settings sidebar')
 
@@ -27,7 +27,7 @@
         </div>
         <div class="panel-body">
             <section>
-            <form action="{{url("client/$clients->id")}}" method="POST" >
+            <form action="{{route('client.update', $clients->id)}}" method="POST" >
                     @csrf
                     {{ method_field('patch') }}
 

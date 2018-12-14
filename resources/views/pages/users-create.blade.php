@@ -27,7 +27,7 @@
         </div>
         <div class="panel-body">
             <section>
-                <form action="/users" method="POST" >
+                <form action="{{route('users.store')}}" method="POST" >
                     @csrf
                     
 

@@ -1,4 +1,4 @@
-@extends('layouts\dashboard-app', ['sidebarHide' => true], ['sidebarSettings' => true] )
+@extends('layouts\dashboard-app', ['sidebarHide' => true], ['sidebarAdmin' => true] )
 
 @section('title', 'page with settings sidebar')
 
@@ -66,7 +66,7 @@
                           </tbody>
 
                           <div class="modal-footer">
-                            <a   href="/users/create"  class="btn btn-success">Opret</a>
+                          <a   href="{{route('users.create')}}"  class="btn btn-success">Opret</a>
 
                           </div>
 

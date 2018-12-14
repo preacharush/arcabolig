@@ -23,7 +23,7 @@ class PagesController extends Controller
         if ((Auth::user()->company_id) == null) {
             
             //if company id null redirect to create company
-            return redirect('create-company');
+            return redirect()->route('create-company');
         }
 
        

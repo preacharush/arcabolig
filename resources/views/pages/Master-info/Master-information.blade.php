@@ -1,10 +1,14 @@
-@extends('layouts\dashboard-app', ['sidebarHide' => true], ['sidebarSettings' => true] )
+@extends('layouts\dashboard-app', ['sidebarHide' => true], ['sidebarAdmin' => true] )
 
 @section('title', 'page with settings sidebar')
 
 @section('content')
     
-
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
 
 <div class="settings">
     
@@ -99,7 +103,7 @@
 
                                                     <div id="company-info">
                                                         
-                                                    <form action="/settings/{{Auth::user()->id}}" method="POST" id='compInfoUpdateForm'>
+                                                    <form action="{{route('settings.update',Auth::user()->id)}}" method="POST" id='compInfoUpdateForm'>
                                                         @csrf
                                                         {{ method_field('patch') }}
 

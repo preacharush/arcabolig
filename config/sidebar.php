@@ -17,27 +17,6 @@ return [
 			'icon' => 'fa fa-th-large',
 			'title' => 'Dashboard',
 			'url' => 'javascript:;',
-			'caret' => true,
-			'sub_menu' => [[
-				'url' => '',
-				'title' => 'Dashboard v1'
-			],[
-				'url' => '/dashboard/v2',
-				'title' => 'Dashboard v2'
-			]]
-		],[
-			'icon' => 'fa fa-align-left',
-			'title' => 'Klienter',
-			'url' => 'javascript:;',
-			'caret' => true,
-			'sub_menu' => [[
-				'url' => '/client',
-				'title' => 'Oversigt'
-			],[
-				'url' => 'javascript:;',
-				'title' => 'Lejemål'
-			]]
-
 		],[
 			'icon' => 'fa fa-align-left',
 			'title' => 'Ejendom',
@@ -56,38 +35,19 @@ return [
 
 		],[
 			'icon' => 'fa fa-align-left',
-			'title' => 'Menu Level',
+			'title' => 'Opkrævninger',
 			'url' => 'javascript:;',
 			'caret' => true,
 			'sub_menu' => [[
 				'url' => 'javascript:;',
-				'title' => 'Menu 1.1',
-				'sub_menu' => [[
-					'url' => 'javascript:;',
-					'title' => 'Menu 2.1',
-					'sub_menu' => [[
-						'url' => 'javascript:;',
-						'title' => 'Menu 3.1',
-					],[
-						'url' => 'javascript:;',
-						'title' => 'Menu 3.2'
-					]]
-				],[
-					'url' => 'javascript:;',
-					'title' => 'Menu 2.2'
-				],[
-					'url' => 'javascript:;',
-					'title' => 'Menu 2.3'
-				]]
+				'title' => 'Oversigt'
 			],[
 				'url' => 'javascript:;',
-				'title' => 'Menu 1.2'
+				'title' => 'Reguleringer'
 			],[
 				'url' => 'javascript:;',
-				'title' => 'Menu 1.3'
+				'title' => 'rapporter'
 			]]
-
-
 
 		]
 	]

@@ -21,7 +21,7 @@ Route::get('/overview','overviewController@index')->name('user.overview');
 
 //Settings cotrollers
 Route::get('/settings','settingsController@index')->name('company.settings');
-Route::resource('/settings','settingsController');
+Route::resource('admin/settings','settingsController');
 
 Auth::routes();
 
@@ -38,13 +38,19 @@ Route::prefix('admin')->group(function() {
 });
 
 //create companys
-Route::get('/create-company', 'insertCompanyController@index');
+Route::get('/create-company', 'insertCompanyController@index')->name('create-company');
 Route::post('/create-company.create', 'insertCompanyController@create')->name('create-company.create');;
 // Route::resource('/create-company','insertCompanyController');
 
 // USERS - show - Create - Edit - Delete
-Route::resource('/users','UsersController');
+Route::resource('admin/users','UsersController');
 
 // Client - show - Create - Edit - Delete
-Route::resource('/client','ClientController'); 
+Route::resource('admin/client','ClientController'); 
+
+// Master info view
+Route::get('/admin/master-information', function (){
+
+    return view('pages/master-info/master-information');
+})->name('master-info');
 

@@ -36,6 +36,8 @@ class insertCompanyController extends Controller
      */
     public function create(Request $request)
     {
+        
+        
         // grap post and create variables
         $comp_name = $request->comp_name;
         $address = $request->address;
@@ -74,7 +76,7 @@ class insertCompanyController extends Controller
 
         // Create company in table and grab company ID
         $companyId = DB::table('company')->insertGetId( $companyData );
-
+        
         //Get user id  
         $userId = Auth::user()->id;
        
@@ -83,8 +85,13 @@ class insertCompanyController extends Controller
             ->where('id', $userId )
             ->update(['company_id' => $companyId]);
 
+        // FINISH TRANSACTION
+        
+        //set Company id as session variable
+        session(['company_id' => $companyId, 'comp_name'=>$comp_name]);
+
         // Redirect to Settings to view the information
-            return redirect('/settings');
+            return redirect()->route('settings.index');
         
     }
 

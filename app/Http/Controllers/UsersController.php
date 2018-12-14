@@ -18,12 +18,22 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         //get users data - company id = session company_id
-        $users = User::with('company')
+        if (session()->get('company_id')) {
+            $users = User::with('company')
                     ->where('company_id', session()->get('company_id'))
                     ->get();
 
+                    return view('pages/users-show', compact('users'));
 
-        return view('pages/users-show', compact('users'));
+        } else {
+            $flash = session()->flash('message', 'You need to fill company information to proceed');
+
+            
+            return redirect('create-company');
+            
+        }
+        
+        
     }
 
     /**
@@ -68,7 +78,7 @@ class UsersController extends Controller
         //User gets createt
         $createUser = user::create($userData);
 
-        return redirect('users');
+        return redirect()->route('users.index');
         
 
         
@@ -146,7 +156,7 @@ class UsersController extends Controller
          ->update($userData);
 
 
-         return redirect('users');
+         return redirect()->route('users.index');
     }
 
     /**
@@ -163,7 +173,7 @@ class UsersController extends Controller
          ->where('users.id', '=', $user->id)
          ->delete();
 
-         return redirect('users');
+         return redirect()->route('users.index');
 
     }
 }

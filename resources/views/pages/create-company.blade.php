@@ -1,10 +1,14 @@
-@extends('layouts\dashboard-app', ['sidebarHide' => true], ['sidebarSettings' => true] )
+@extends('layouts\dashboard-app', ['sidebarHide' => true], ['sidebarAdmin' => true] )
 
 @section('title', 'page with settings sidebar')
 
 @section('content')
     
-
+@if ($flash = session('message'))
+    <div class="alert alert-danger">
+       <h2> {{ session('message') }} </h2>
+    </div>
+@endif
 
 <div class="settings">
 

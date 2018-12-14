@@ -58,7 +58,7 @@ class settingsController extends Controller
                 // dd($data);
         
             
-         return view('pages/settings', compact('data','cities', 'countries'));
+         return view('pages/master-info/master-information', compact('data','cities', 'countries'));
         
         //
     }

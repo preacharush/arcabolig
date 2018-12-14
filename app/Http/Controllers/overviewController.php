@@ -38,7 +38,7 @@ class overviewController extends Controller
                 // dd($data);
         
             
-         return view('pages/user-overview');
+         return view('pages/property/property-overview');
         
         //
     }

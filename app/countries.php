@@ -11,6 +11,10 @@ class countries extends Model
     protected $fillable = ['created_at', 'updated_at'];
 
     
+    public function postal_codes() {
+        
+        return $this->hasMany('app\postalcodes');
     
+    }
     
 }

@@ -12,7 +12,7 @@
 	$bodyClass = (!empty($boxedLayout)) ? 'boxed-layout' : '';
 	$bodyClass .= (!empty($paceTop)) ? 'pace-top ' : '';
     $bodyClass .= (!empty($bodyExtraClass)) ? $bodyExtraClass . ' ' : '';
-    $sidebarSettings = (!empty($sidebarSettings)) ? $sidebarSettings     : '';
+    $sidebarAdmin = (!empty($sidebarAdmin)) ? $sidebarAdmin     : '';
 	$sidebarHide = (!empty($sidebarHide)) ? $sidebarHide : '';
 	$sidebarTwo = (!empty($sidebarTwo)) ? $sidebarTwo : '';
 	$topMenu = (!empty($topMenu)) ? $topMenu : '';
@@ -20,7 +20,7 @@
 	
 	// nedenfor er defineret class, page container
 	$pageContainerClass = (!empty($sidebarHide)) ? 'user-dashboard ' : '';
-	$pageContainerClass .= (!empty($sidebarSettings)) ? 'page-with-settings-sidebar ' : '';
+	$pageContainerClass .= (!empty($sidebarAdmin)) ? 'page-with-settings-sidebar ' : '';
 	$pageContainerClass .= (!empty($sidebarTwo)) ? 'page-with-two-sidebar ' : '';
 	$pageContainerClass .= (!empty($contentFullHeight)) ? 'page-content-full-height ' : '';
 	
@@ -39,7 +39,7 @@
             
             @includeWhen(!$sidebarHide, 'includes/dashboard-sidebar')
 
-            @includeWhen($sidebarSettings, 'includes/dashboard-sidebar-settings')
+            @includeWhen($sidebarAdmin, 'includes/dashboard-sidebar-settings')
 
                 <div id="content" class="content">
                     

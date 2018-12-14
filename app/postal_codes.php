@@ -12,7 +12,11 @@ class postalcodes extends Model
 
     
     
+    public function postal_code() {
         
+        return $this->belongsTo('App\countries');
+        
+    }
 
     
 }

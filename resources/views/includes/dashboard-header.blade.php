@@ -13,6 +13,7 @@
         
         <!-- begin header-nav -->
         <ul class="navbar-nav navbar-right">
+            {{-- Serch field --}}
             <li>
                 <form class="navbar-form">
                     <div class="form-group">
@@ -21,6 +22,7 @@
                     </div>
                 </form>
             </li>
+            
             <li class="dropdown">
                 <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
                     <i class="fa fa-bell"></i>
@@ -33,6 +35,29 @@
                     </li>
                 </ul>
             </li>
+            {{-- Settings dopdown --}}
+            <li class="dropdown">
+                <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                        <i class="fas fa-cog"></i>
+                        
+                </a>
+                <ul class="dropdown-menu media-list dropdown-menu-right">
+                        <a href="javascript:;" class="dropdown-item">Edit Profile</a>
+                        <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a>
+                        <a href="javascript:;" class="dropdown-item">Calendar</a>
+                        <a href="javascript:;" class="dropdown-item">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); 
+                            document.getElementById('logout-form').submit();" class="dropdown-item">{{ __('Logout') }}</a>
+    
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>    
+                    
+                </ul>
+                
+            </li>
+            {{-- companies Dropdown --}}
             <li class="dropdown navbar-user">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                     <div class="image image-icon bg-black text-grey-darker">
@@ -42,17 +67,17 @@
                     <span class="d-none d-md-inline">{{session()->get('comp_name') ? session()->get('comp_name') : 'Company not created' }}</span> <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a href="javascript:;" class="dropdown-item">Edit Profile</a>
-                    <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a>
-                    <a href="javascript:;" class="dropdown-item">Calendar</a>
-                    <a href="{{ url('/settings') }}" class="dropdown-item">Settings</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); 
-                        document.getElementById('logout-form').submit();" class="dropdown-item">{{ __('Logout') }}</a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                        @if (strpos($_SERVER['REQUEST_URI'], "admin") !== false)
+                        <a href="{{ route('user.dashboard') }}" class="dropdown-item">Temporary Home BTN</a>
+                        @else
+                        
+                        <a href="{{ route('settings.index') }}" class="dropdown-item">Administrator Dashboard</a>
+                        @endif 
+                    
+                
+                {{-- @foreach ( as )
+                    
+                @endforeach --}}
 
                 </div>
             </li>
