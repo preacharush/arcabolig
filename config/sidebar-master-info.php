@@ -34,7 +34,7 @@ return [
 				'url' => '/admin/client',
 				'title' => 'Klienter'
 			],[
-				'url' => 'javascript:;',
+				'url' => '/admin/properties',
 				'title' => 'Ejendomme'
 			]]
 		]

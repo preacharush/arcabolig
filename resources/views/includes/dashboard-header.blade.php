@@ -67,17 +67,27 @@
                     <span class="d-none d-md-inline">{{session()->get('comp_name') ? session()->get('comp_name') : 'Company not created' }}</span> <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                        @if (strpos($_SERVER['REQUEST_URI'], "admin") !== false)
+                        
+                    @if (strpos($_SERVER['REQUEST_URI'], "admin") !== false)
                         <a href="{{ route('user.dashboard') }}" class="dropdown-item">Temporary Home BTN</a>
                         @else
                         
                         <a href="{{ route('settings.index') }}" class="dropdown-item">Administrator Dashboard</a>
                         @endif 
                     
-                
-                {{-- @foreach ( as )
-                    
-                @endforeach --}}
+
+                         {{-- associatet companies --}}
+                        @foreach (session()->get('comp_info') as $keys)
+
+                         
+                            <a href="{{ route('set-active-property',"$keys->id" ) }}" class="dropdown-item"> {{$keys->property_name}} 
+                                    
+                                <br style="line-height:0px;" />{{$keys->property_unique_id}} 
+                                     
+                            </a>
+                        
+                  
+                        @endforeach 
 
                 </div>
             </li>

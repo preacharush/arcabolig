@@ -23,7 +23,7 @@ class UsersController extends Controller
                     ->where('company_id', session()->get('company_id'))
                     ->get();
 
-                    return view('pages/users-show', compact('users'));
+                    return view('pages/users/users-show', compact('users'));
 
         } else {
             $flash = session()->flash('message', 'You need to fill company information to proceed');
@@ -43,7 +43,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('pages/users-create', compact(''));
+        return view('pages/users/users-create', compact(''));
     }
 
     /**
@@ -107,7 +107,7 @@ class UsersController extends Controller
 
         
 
-        return view('pages.users-edit', compact('user'));
+        return view('pages/users/users-edit', compact('user'));
     }
 
     /**

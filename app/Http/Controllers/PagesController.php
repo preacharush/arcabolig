@@ -19,6 +19,9 @@ class PagesController extends Controller
     public function userdashboard(Request $request)
     {
         
+
+
+        //  dd(session());
         //tjekk iff company id is null (new users only)
         if ((Auth::user()->company_id) == null) {
             
@@ -27,7 +30,7 @@ class PagesController extends Controller
         }
 
        
-        //Get compoany ID to set the session variable
+        //Check if company User company is set - Get compoany ID to set the session variable
         if (!session()->get('company_id')) {
            
             $companyId = DB::table('company')
@@ -43,15 +46,75 @@ class PagesController extends Controller
 
     
         }
-       
-        //  dd(session());
-            
-        
-        // dd(session()->get('company_id'));
+        //Get Klient company details to set the session variable
+        if (!session()->get('comp_info')) {
+           
+            $properties = DB::table('clients')
+            ->join('address', 'address.id','=', 'clients.address_id')
+            ->join('company_has_clients','clients.id','=','company_has_clients.client_id')
+            ->join('company','company.id','=','company_has_clients.company_id')
+            ->join('client_has_property','clients.id', '=','client_has_property.client_id')
+            ->join('properties','properties.id', '=', 'client_has_property.property_id')
+            ->where('company.id', '=', session()->get('company_id'))
+            ->select('properties.id','properties.property_unique_id','property_name')
+            ->get();            
 
-        return view('pages/user-dashboard',compact('companyId'));
+            // set properties data in array object
+            $properties = ['comp_info'=>$properties];
+            // dd($properties['comp_info']);
+            // dd(session()->get('comp_info'));
+            // dd(session()->get('comp_info')[0]);
+            
+            //Set session variables
+            session($properties);
+            //   dd(session());
+    
+             
+
+    
+        }
+            
+            
+       
+
+         return view('pages/user-dashboard',compact('companyId','comp_data'));
+
+        // stdClass Object ( [id] => 1 [property_unique_id] => 42414988 [property_name] => Keeling, Bauch and Larson ) 
+
+        // foreach ($comp_data as $keys){
+
+        //     echo $keys->property_name;       
+        //     // print_r($keys);
+        //     echo"<br>";
+        // }  
+           
+
+      
     }
 
+    public function setActievProperty(Request $request, $id)
+    {
+
+        
+
+        // Check IF session Active_property is set
+        if (!session()->get('active_property')) {
+                // Set Session Active company
+                session(['active_property' => $id]);
+        }
+
+        if (session()->get('active_property')) {
+           
+            //delete old active property from session
+            session()->forget('active_property');
+            //set new active_property value
+            session(['active_property' => $id]);
+        }
+
+        
+
+       return redirect()->route('user.dashboard');
+    }
     
     
 }

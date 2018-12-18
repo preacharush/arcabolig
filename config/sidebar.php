@@ -46,7 +46,7 @@ return [
 				'title' => 'Reguleringer'
 			],[
 				'url' => 'javascript:;',
-				'title' => 'rapporter'
+				'title' => 'Rapporter'
 			]]
 
 		]

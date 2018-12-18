@@ -48,9 +48,9 @@ Route::resource('admin/users','UsersController');
 // Client - show - Create - Edit - Delete
 Route::resource('admin/client','ClientController'); 
 
-// Master info view
-Route::get('/admin/master-information', function (){
+//property - show - Create - Edit - Delete
+Route::resource('admin/properties','PropertyController');
 
-    return view('pages/master-info/master-information');
-})->name('master-info');
+//set active client property in session - When chossen in dropdown
+Route::get('set-property-session/{id}', 'Pagescontroller@setActievProperty')->name('set-active-property');
 

@@ -1,4 +1,4 @@
-@extends('layouts\dashboard-app', ['sidebarHide' => true], ['sidebarSettings' => true] )
+@extends('layouts\dashboard-app', ['sidebarHide' => true], ['sidebarAdmin' => true] )
 
 @section('title', 'page with settings sidebar')
 
