@@ -21,7 +21,7 @@ class PagesController extends Controller
         
 
 
-        //  dd(session());
+        //   dd(session());
         //tjekk iff company id is null (new users only)
         if ((Auth::user()->company_id) == null) {
             
@@ -30,7 +30,7 @@ class PagesController extends Controller
         }
 
        
-        //Check if company User company is set - Get compoany ID to set the session variable
+        //Check if User company is set - Get compoany ID to set the session variable
         if (!session()->get('company_id')) {
            
             $companyId = DB::table('company')
@@ -46,7 +46,7 @@ class PagesController extends Controller
 
     
         }
-        //Get Klient company details to set the session variable
+        //Get Klient company/property details to set the session variable
         if (!session()->get('comp_info')) {
            
             $properties = DB::table('clients')
@@ -69,9 +69,6 @@ class PagesController extends Controller
             session($properties);
             //   dd(session());
     
-             
-
-    
         }
             
             
@@ -92,7 +89,7 @@ class PagesController extends Controller
       
     }
 
-    public function setActievProperty(Request $request, $id)
+    public function setActievProperty(Request $request, $id, $property_name)
     {
 
         
@@ -100,7 +97,10 @@ class PagesController extends Controller
         // Check IF session Active_property is set
         if (!session()->get('active_property')) {
                 // Set Session Active company
-                session(['active_property' => $id]);
+                session(['active_property' =>[
+                    'id'=> $id,
+                    'comp_name'=> $property_name
+                    ]]);
         }
 
         if (session()->get('active_property')) {
@@ -108,10 +108,13 @@ class PagesController extends Controller
             //delete old active property from session
             session()->forget('active_property');
             //set new active_property value
-            session(['active_property' => $id]);
+            session(['active_property' =>[
+                        'id'=> $id,
+                        'comp_name'=> $property_name
+                        ]]);
         }
 
-        
+        // dd(session('active_property')['comp_name']);
 
        return redirect()->route('user.dashboard');
     }

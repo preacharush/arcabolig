@@ -22,4 +22,11 @@ class company extends Model
             return $this->hasMany(users::class);
         
         }
+
+        public function clients() {
+
+            return $this->belongsToMany(Client::class,'company_has_clients','id','company_id');
+        
+        }
+        
 }

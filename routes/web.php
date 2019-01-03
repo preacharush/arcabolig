@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard','Pagescontroller@userdashboard')->name('user.dashboard');
-Route::get('/overview','overviewController@index')->name('user.overview');
+Route::get('property/overview','overviewController@index')->name('user.overview');
 
 
 //Settings cotrollers
@@ -52,5 +52,5 @@ Route::resource('admin/client','ClientController');
 Route::resource('admin/properties','PropertyController');
 
 //set active client property in session - When chossen in dropdown
-Route::get('set-property-session/{id}', 'Pagescontroller@setActievProperty')->name('set-active-property');
+Route::get('company-dashboard/{id}/{comp_name}', 'Pagescontroller@setActievProperty')->name('set-active-property');
 

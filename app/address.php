@@ -27,6 +27,7 @@ class address extends Model
         {
             
         return $this->belongsToMany('App\Property','property_has_address','address_id','property_id');
+        // return $this->belongsToMany('App\Property','property_has_address');
 
         }
 

@@ -1,4 +1,4 @@
-@extends('layouts\dashboard-app', ['sidebarHide' => true], ['sidebarAdmin' => true] )
+@extends('layouts\dashboard-app', ['sidebarHide' => false], ['sidebarAdmin' => false] )
 
 @section('title', 'page with settings sidebar')
 
@@ -17,64 +17,34 @@
   <!-- end breadcrumb -->
 
   <!-- begin page-header -->
-  <h1 class="page-header">Klienter</h1>
+  <h1 class="page-header">Ejendoms data</h1>
   <!-- end page-header -->
 
   <!-- begin panel -->
   <div class="panel panel-inverse">
       <div class="panel-heading">
-          <h2 class="panel-title">Klient oversigt</h2>
+          <h2 class="panel-title">Ejendoms oversigt</h2>
       </div>
       
       <div class="panel-body">
-          <section>
-                  <table class="table">
+
+                <section>
+                 
+                  <div class="container" style="height: 500px">
+
+                      <div class="row" style="height: 300px">
+                        <div class="col bg-info text-white mr-1">
+                          1 of 2
+                          <br>
+                          more text
                           
-                          <thead>
-                            
-                            <tr>
-                              <th>ID</th>
-                              <th>Navn</th>
-                              <th>Adr</th>                                                         
-                              <th>Ejer</th>                                                         
-                              <th>Oprettet</th>
-                            </tr>
+                        </div>
+                        <div class="col bg-info text-white">
+                          2 of 2
+                        </div>
+                      </div>
+                  </div> 
 
-                          </thead>
-
-                          <tbody>
-                          
-                            @foreach ($properties as $property )
-                             
-                              <tr>
-							  <td>{{$property->property_unique_id}}</td>
-                                <td>{{$property->property_name}}</td>
-                                <td></td>
-                                <td></td>  
-                                <td></td>  
-                                <td></td>  
-                                <td></td>  
-                                <td>
-                                  <form action="{{route('client.destroy', '$client->id')}}" method="POST" id='deleteClientForm'> {{ method_field('DELETE') }} @csrf
-                                    <div class="btn btn-info btn-sm"> 
-                                      <a href="{{route('client.edit', '$client->id')}}" style="color:inherit;">Administrer </a> 
-                                    </div>
-                                    |
-                                      <button  type="submit"  class="btn btn-danger btn-sm" > slet </button>
-                                  </form> 
-                                </td>   
-                              </tr>
-
-                            @endforeach
-                          
-                          </tbody>
-
-                          <div class="modal-footer">
-                            <a   href="{{route('client.create')}}"  class="btn btn-success">Opret</a>
-
-                          </div>
-
-                    </table>
           </section>
       </div>
   </div>

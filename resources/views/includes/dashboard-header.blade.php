@@ -64,7 +64,7 @@
                         <i class="fa fa-user"></i>
                     </div>
                     {{-- Logged ind company in headder --}}
-                    <span class="d-none d-md-inline">{{session()->get('comp_name') ? session()->get('comp_name') : 'Company not created' }}</span> <b class="caret"></b>
+                    <span class="d-none d-md-inline">{{session('active_property')['comp_name'] ? session('active_property')['comp_name'] : 'Vælg ejendom' }}</span> <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                         
@@ -77,12 +77,12 @@
                     
 
                          {{-- associatet companies --}}
-                        @foreach (session()->get('comp_info') as $keys)
+                        @foreach (session()->get('comp_info') as $companyDetail)
 
                          
-                            <a href="{{ route('set-active-property',"$keys->id" ) }}" class="dropdown-item"> {{$keys->property_name}} 
+                            <a href="{{route('set-active-property',[$companyDetail->id, $companyDetail->property_name])}}" class="dropdown-item"> {{$companyDetail->property_name}} 
                                     
-                                <br style="line-height:0px;" />{{$keys->property_unique_id}} 
+                                <br style="line-height:0px;" />{{$companyDetail->property_unique_id}} 
                                      
                             </a>
                         

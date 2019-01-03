@@ -23,13 +23,13 @@ return [
 			'url' => 'javascript:;',
 			'caret' => true,
 			'sub_menu' => [[
-				'url' => '/overview',
+				'url' => '/property/overview',
 				'title' => 'Oversigt'
 			],[
-				'url' => 'javascript:;',
+				'url' => '/property/lease',
 				'title' => 'Lejemål'
 			],[
-				'url' => 'javascript:;',
+				'url' => '/property/resident',
 				'title' => 'Beboer'
 			]]
 
@@ -47,6 +47,22 @@ return [
 			],[
 				'url' => 'javascript:;',
 				'title' => 'Rapporter'
+			]]
+
+		],[
+			'icon' => 'fa fa-align-left',
+			'title' => 'Drift',
+			'url' => 'javascript:;',
+			'caret' => true,
+			'sub_menu' => [[
+				'url' => 'javascript:;',
+				'title' => 'Oversigt'
+			],[
+				'url' => 'javascript:;',
+				'title' => 'Indflytninger'
+			],[
+				'url' => 'javascript:;',
+				'title' => 'Udflytninger'
 			]]
 
 		]
